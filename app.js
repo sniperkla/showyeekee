@@ -18,6 +18,9 @@ mongoose
 app.get("/yeekee", async (req, res) => {
   Schema.find()
     .then((result) => {
+      result.sort(function (a, b) {
+        return Number(a.round) - Number(b.round);
+      });
       res.status(200).send(result);
     })
     .catch((error) => {
